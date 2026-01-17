@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "title": "Sum of Two Numbers",
+    "description": "Read two integers a and b and print their sum.",
+    "difficulty": "Easy",
+    "defaultInput": "2 3",
+    "tests": [
+      { "input": "2 3", "expectedOutput": "5" },
+      { "input": "-2 8", "expectedOutput": "6" },
+      { "input": "0 0", "expectedOutput": "0" }
+    ],
+    "starterCode": {
+      "python": "a,b = map(int,input().split())\nprint(a+b)",
+      "javascript": "const fs=require('fs');const [a,b]=fs.readFileSync(0,'utf8').trim().split(/\\s+/).map(Number);console.log(a+b);",
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;int main(){long long a,b; if(!(cin>>a>>b)) return 0; cout<<a+b; }"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Factorial",
+    "description": "Given n (0 ≤ n ≤ 12), print n!.",
+    "difficulty": "Easy",
+    "defaultInput": "5",
+    "tests": [
+      { "input": "0", "expectedOutput": "1" },
+      { "input": "1", "expectedOutput": "1" },
+      { "input": "5", "expectedOutput": "120" },
+      { "input": "7", "expectedOutput": "5040" }
+    ],
+    "starterCode": {
+      "python": "n=int(input())\nres=1\nfor i in range(2,n+1):res*=i\nprint(res)",
+      "javascript": "const fs=require('fs');const n=parseInt(fs.readFileSync(0,'utf8').trim(),10);let res=1;for(let i=2;i<=n;i++)res*=i;console.log(res);"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Fibonacci Number",
+    "description": "Given n, print the nth Fibonacci number (0-indexed: F0=0, F1=1).",
+    "difficulty": "Easy",
+    "defaultInput": "7",
+    "tests": [
+      { "input": "0", "expectedOutput": "0" },
+      { "input": "1", "expectedOutput": "1" },
+      { "input": "7", "expectedOutput": "13" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Reverse String",
+    "description": "Given a string s, print the reverse of s.",
+    "difficulty": "Easy",
+    "defaultInput": "hello",
+    "tests": [
+      { "input": "hello", "expectedOutput": "olleh" },
+      { "input": "abcde", "expectedOutput": "edcba" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Palindrome String",
+    "description": "Given a string s, print 'true' if it's a palindrome, else 'false'. Case sensitive.",
+    "difficulty": "Easy",
+    "defaultInput": "level",
+    "tests": [
+      { "input": "level", "expectedOutput": "true" },
+      { "input": "leetcode", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Anagram Check",
+    "description": "Given two strings (space separated), print 'true' if they are anagrams, else 'false'.",
+    "difficulty": "Easy",
+    "defaultInput": "listen silent",
+    "tests": [
+      { "input": "listen silent", "expectedOutput": "true" },
+      { "input": "hello world", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Prime Check",
+    "description": "Given n, print 'true' if n is prime else 'false'.",
+    "difficulty": "Easy",
+    "defaultInput": "11",
+    "tests": [
+      { "input": "2", "expectedOutput": "true" },
+      { "input": "15", "expectedOutput": "false" },
+      { "input": "17", "expectedOutput": "true" }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "GCD of Two Numbers",
+    "description": "Given a and b, print gcd(a,b).",
+    "difficulty": "Easy",
+    "defaultInput": "24 18",
+    "tests": [
+      { "input": "24 18", "expectedOutput": "6" },
+      { "input": "7 13", "expectedOutput": "1" }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "LCM of Two Numbers",
+    "description": "Given a and b, print lcm(a,b).",
+    "difficulty": "Easy",
+    "defaultInput": "4 6",
+    "tests": [
+      { "input": "4 6", "expectedOutput": "12" },
+      { "input": "21 6", "expectedOutput": "42" }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Count Words",
+    "description": "Given a line, print the number of words (split by whitespace).",
+    "difficulty": "Easy",
+    "defaultInput": "hello there general kenobi",
+    "tests": [
+      { "input": "hello there", "expectedOutput": "2" },
+      { "input": "one  two   three", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Valid Parentheses",
+    "description": "Given (){}[] string, print 'true' if valid else 'false'.",
+    "difficulty": "Medium",
+    "defaultInput": "()[]{}",
+    "tests": [
+      { "input": "()[]{}", "expectedOutput": "true" },
+      { "input": "(]", "expectedOutput": "false" },
+      { "input": "([{}])", "expectedOutput": "true" },
+      { "input": "(((", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Two Sum (Index)",
+    "description": "Given an array and target (format: n then n numbers then target), print indices i j (0-based) such that a[i]+a[j]=target; if none, print -1 -1.",
+    "difficulty": "Medium",
+    "defaultInput": "4\n2 7 11 15\n9",
+    "tests": [
+      { "input": "4\n2 7 11 15\n9", "expectedOutput": "0 1" },
+      { "input": "3\n3 2 4\n6", "expectedOutput": "1 2" }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Remove Duplicates from Array",
+    "description": "Given n then n integers, print the array with duplicates removed while preserving first occurrence (space separated).",
+    "difficulty": "Medium",
+    "defaultInput": "7\n1 1 2 2 3 4 4",
+    "tests": [
+      { "input": "7\n1 1 2 2 3 4 4", "expectedOutput": "1 2 3 4" },
+      { "input": "5\n5 5 5 5 5", "expectedOutput": "5" }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Sort Numbers",
+    "description": "Given n then n integers, print them sorted ascending (space separated).",
+    "difficulty": "Easy",
+    "defaultInput": "5\n5 1 4 2 3",
+    "tests": [
+      { "input": "5\n5 1 4 2 3", "expectedOutput": "1 2 3 4 5" },
+      { "input": "3\n-1 -3 -2", "expectedOutput": "-3 -2 -1" }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Binary Search",
+    "description": "Given n then sorted array then target, print index or -1.",
+    "difficulty": "Medium",
+    "defaultInput": "5\n1 3 5 7 9\n7",
+    "tests": [
+      { "input": "5\n1 3 5 7 9\n7", "expectedOutput": "3" },
+      { "input": "4\n2 4 6 8\n5", "expectedOutput": "-1" }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Merge Two Sorted Arrays",
+    "description": "Given n and array A, then m and array B (both sorted), print merged sorted array.",
+    "difficulty": "Medium",
+    "defaultInput": "3\n1 3 5\n3\n2 4 6",
+    "tests": [
+      { "input": "3\n1 3 5\n3\n2 4 6", "expectedOutput": "1 2 3 4 5 6" },
+      { "input": "1\n1\n2\n-1 2", "expectedOutput": "-1 1 2" }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Max Subarray Sum",
+    "description": "Given n then n integers, print the maximum subarray sum (Kadane).",
+    "difficulty": "Medium",
+    "defaultInput": "9\n-2 1 -3 4 -1 2 1 -5 4",
+    "tests": [
+      { "input": "9\n-2 1 -3 4 -1 2 1 -5 4", "expectedOutput": "6" },
+      { "input": "5\n-1 -2 -3 -4 -5", "expectedOutput": "-1" }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Longest Word",
+    "description": "Given a sentence, print the longest word. If tie, print the first longest.",
+    "difficulty": "Easy",
+    "defaultInput": "I love coding challenges",
+    "tests": [
+      { "input": "I love coding challenges", "expectedOutput": "challenges" },
+      { "input": "to be or not to be", "expectedOutput": "not" }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Matrix Transpose (2x2)",
+    "description": "Given 4 integers representing a 2x2 matrix (row-wise), print its transpose as 2 lines.",
+    "difficulty": "Easy",
+    "defaultInput": "1 2 3 4",
+    "tests": [
+      { "input": "1 2 3 4", "expectedOutput": "1 3\n2 4" },
+      { "input": "0 5 -1 2", "expectedOutput": "0 -1\n5 2" }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Count Character Frequency",
+    "description": "Given a string s, print character frequencies in ascending key order as 'char:count' lines.",
+    "difficulty": "Medium",
+    "defaultInput": "banana",
+    "tests": [
+      { "input": "banana", "expectedOutput": "a:3\nb:1\nn:2" },
+      { "input": "aab", "expectedOutput": "a:2\nb:1" }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Reverse Linked List",
+    "description": "Given the number of nodes n followed by n integers, representing a singly linked list, print the elements in reverse order.",
+    "difficulty": "Medium",
+    "defaultInput": "5\n1 2 3 4 5",
+    "tests": [
+      { "input": "5\n1 2 3 4 5", "expectedOutput": "5 4 3 2 1" },
+      { "input": "3\n10 20 30", "expectedOutput": "30 20 10" }
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Detect Cycle in Linked List",
+    "description": "Given the number of nodes n and edges describing next pointers, print 'true' if a cycle exists, else 'false'. (Input: n followed by pairs u v).",
+    "difficulty": "Medium",
+    "defaultInput": "3\n1 2\n2 3\n3 1",
+    "tests": [
+      { "input": "3\n1 2\n2 3\n3 1", "expectedOutput": "true" },
+      { "input": "3\n1 2\n2 3", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Middle of Linked List",
+    "description": "Given n followed by n integers, find the middle element of the linked list (second middle if even length).",
+    "difficulty": "Easy",
+    "defaultInput": "5\n1 2 3 4 5",
+    "tests": [
+      { "input": "5\n1 2 3 4 5", "expectedOutput": "3" },
+      { "input": "4\n1 2 3 4", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Merge Two Sorted Linked Lists",
+    "description": "Given two sorted linked lists, merge them into one sorted list and print the elements.",
+    "difficulty": "Medium",
+    "defaultInput": "3\n1 2 4\n3\n1 3 4",
+    "tests": [
+      { "input": "3\n1 2 4\n3\n1 3 4", "expectedOutput": "1 1 2 3 4 4" },
+      { "input": "2\n2 5\n2\n1 3", "expectedOutput": "1 2 3 5" }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Next Greater Element",
+    "description": "Given n followed by n integers, print for each element the next greater element to its right, or -1 if none.",
+    "difficulty": "Medium",
+    "defaultInput": "4\n4 5 2 25",
+    "tests": [
+      { "input": "4\n4 5 2 25", "expectedOutput": "5 25 25 -1" },
+      { "input": "5\n13 7 6 12 10", "expectedOutput": "-1 12 12 -1 -1" }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Queue Using Stacks",
+    "description": "Implement a queue using two stacks. Given commands (push x / pop), print the popped elements.",
+    "difficulty": "Medium",
+    "defaultInput": "5\npush 1\npush 2\npop\npush 3\npop",
+    "tests": [
+      { "input": "5\npush 1\npush 2\npop\npush 3\npop", "expectedOutput": "1 2" }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Valid Expression",
+    "description": "Given a mathematical expression containing parentheses, check if it's valid. Only '(' and ')' are considered.",
+    "difficulty": "Easy",
+    "defaultInput": "(())",
+    "tests": [
+      { "input": "(())", "expectedOutput": "true" },
+      { "input": "(()", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "Binary Tree Height",
+    "description": "Given a binary tree as an array (level order), print its height.",
+    "difficulty": "Medium",
+    "defaultInput": "7\n1 2 3 4 5 6 7",
+    "tests": [
+      { "input": "7\n1 2 3 4 5 6 7", "expectedOutput": "3" },
+      { "input": "3\n1 2 3", "expectedOutput": "2" }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Inorder Traversal of Binary Tree",
+    "description": "Given a binary tree in array format (level order), print the inorder traversal.",
+    "difficulty": "Medium",
+    "defaultInput": "7\n1 2 3 4 5 6 7",
+    "tests": [
+      { "input": "7\n1 2 3 4 5 6 7", "expectedOutput": "4 2 5 1 6 3 7" }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Level Order Traversal",
+    "description": "Given a binary tree as an array (level order), print nodes level by level.",
+    "difficulty": "Medium",
+    "defaultInput": "7\n1 2 3 4 5 6 7",
+    "tests": [
+      { "input": "7\n1 2 3 4 5 6 7", "expectedOutput": "1\n2 3\n4 5 6 7" }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "Lowest Common Ancestor",
+    "description": "Given a BST and two nodes, print the LCA of the two nodes.",
+    "difficulty": "Medium",
+    "defaultInput": "6\n5 3 8 2 4 7\n2 8",
+    "tests": [
+      { "input": "6\n5 3 8 2 4 7\n2 8", "expectedOutput": "5" },
+      { "input": "6\n5 3 8 2 4 7\n2 4", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Check Balanced Tree",
+    "description": "Given n nodes of a binary tree, print 'true' if height balanced, else 'false'.",
+    "difficulty": "Medium",
+    "defaultInput": "5\n1 2 3 4 5",
+    "tests": [
+      { "input": "5\n1 2 3 4 5", "expectedOutput": "false" },
+      { "input": "3\n1 2 3", "expectedOutput": "true" }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "Rotated Sorted Array Search",
+    "description": "Given a rotated sorted array and a target, return its index or -1.",
+    "difficulty": "Medium",
+    "defaultInput": "7\n4 5 6 7 0 1 2\n0",
+    "tests": [
+      { "input": "7\n4 5 6 7 0 1 2\n0", "expectedOutput": "4" },
+      { "input": "7\n4 5 6 7 0 1 2\n3", "expectedOutput": "-1" }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "Quick Sort",
+    "description": "Given n and n integers, sort them using quick sort algorithm and print the sorted array.",
+    "difficulty": "Medium",
+    "defaultInput": "5\n5 4 3 2 1",
+    "tests": [
+      { "input": "5\n5 4 3 2 1", "expectedOutput": "1 2 3 4 5" }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Merge Sort",
+    "description": "Given n and n integers, sort them using merge sort and print the sorted array.",
+    "difficulty": "Medium",
+    "defaultInput": "5\n5 4 3 2 1",
+    "tests": [
+      { "input": "5\n5 4 3 2 1", "expectedOutput": "1 2 3 4 5" }
+    ]
+  },
+  {
+    "id": 36,
+    "title": "Count Inversions",
+    "description": "Given n and n integers, count number of inversions in the array.",
+    "difficulty": "Hard",
+    "defaultInput": "5\n2 4 1 3 5",
+    "tests": [
+      { "input": "5\n2 4 1 3 5", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 37,
+    "title": "Climbing Stairs",
+    "description": "Given n, print number of distinct ways to climb to top if you can take 1 or 2 steps.",
+    "difficulty": "Easy",
+    "defaultInput": "5",
+    "tests": [
+      { "input": "5", "expectedOutput": "8" },
+      { "input": "3", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 38,
+    "title": "Coin Change",
+    "description": "Given coins and amount, print the minimum coins needed to make up the amount. If not possible, print -1.",
+    "difficulty": "Medium",
+    "defaultInput": "3\n1 2 5\n11",
+    "tests": [
+      { "input": "3\n1 2 5\n11", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 39,
+    "title": "Longest Common Subsequence",
+    "description": "Given two strings, find the length of their longest common subsequence.",
+    "difficulty": "Medium",
+    "defaultInput": "abcde ace",
+    "tests": [
+      { "input": "abcde ace", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 40,
+    "title": "Edit Distance",
+    "description": "Given two strings, print the minimum number of operations required to convert one to another.",
+    "difficulty": "Hard",
+    "defaultInput": "horse ros",
+    "tests": [
+      { "input": "horse ros", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 41,
+    "title": "Number of Islands",
+    "description": "Given a grid of 0s and 1s, count the number of islands (connected 1s).",
+    "difficulty": "Medium",
+    "defaultInput": "4 5\n11000\n11000\n00100\n00011",
+    "tests": [
+      { "input": "4 5\n11000\n11000\n00100\n00011", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 42,
+    "title": "Graph BFS Traversal",
+    "description": "Given n, m edges, and start node, print BFS traversal order.",
+    "difficulty": "Medium",
+    "defaultInput": "5 4\n1 2\n1 3\n2 4\n3 5\n1",
+    "tests": [
+      { "input": "5 4\n1 2\n1 3\n2 4\n3 5\n1", "expectedOutput": "1 2 3 4 5" }
+    ]
+  },
+  {
+    "id": 43,
+    "title": "Graph DFS Traversal",
+    "description": "Given n, m edges, and start node, print DFS traversal order.",
+    "difficulty": "Medium",
+    "defaultInput": "5 4\n1 2\n1 3\n2 4\n3 5\n1",
+    "tests": [
+      { "input": "5 4\n1 2\n1 3\n2 4\n3 5\n1", "expectedOutput": "1 2 4 3 5" }
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Power of Two",
+    "description": "Given n, print 'true' if it is a power of 2 else 'false'.",
+    "difficulty": "Easy",
+    "defaultInput": "16",
+    "tests": [
+      { "input": "16", "expectedOutput": "true" },
+      { "input": "18", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 45,
+    "title": "Palindrome Number",
+    "description": "Given an integer n, print 'true' if it is a palindrome number else 'false'.",
+    "difficulty": "Easy",
+    "defaultInput": "121",
+    "tests": [
+      { "input": "121", "expectedOutput": "true" },
+      { "input": "-121", "expectedOutput": "false" }
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Maximum Product Subarray",
+    "description": "Given n and n integers, print the maximum product of any subarray.",
+    "difficulty": "Medium",
+    "defaultInput": "4\n2 3 -2 4",
+    "tests": [
+      { "input": "4\n2 3 -2 4", "expectedOutput": "6" }
+    ]
+  },
+  {
+    "id": 47,
+    "title": "Trapping Rain Water",
+    "description": "Given n and n integers representing elevation map, compute how much water it can trap.",
+    "difficulty": "Hard",
+    "defaultInput": "12\n0 1 0 2 1 0 1 3 2 1 2 1",
+    "tests": [
+      { "input": "12\n0 1 0 2 1 0 1 3 2 1 2 1", "expectedOutput": "6" }
+    ]
+  },
+  {
+    "id": 48,
+    "title": "Sliding Window Maximum",
+    "description": "Given n, array, and k, print the maximum for each window of size k.",
+    "difficulty": "Hard",
+    "defaultInput": "8\n1 3 -1 -3 5 3 6 7\n3",
+    "tests": [
+      { "input": "8\n1 3 -1 -3 5 3 6 7\n3", "expectedOutput": "3 3 5 5 6 7" }
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Majority Element",
+    "description": "Given n followed by n integers, print the element that appears more than n/2 times.",
+    "difficulty": "Easy",
+    "defaultInput": "5\n2 2 1 1 1",
+    "tests": [
+      { "input": "5\n2 2 1 1 1", "expectedOutput": "1" },
+      { "input": "7\n3 3 4 2 3 3 5", "expectedOutput": "3" }
+    ]
+  },
+  {
+    "id": 50,
+    "title": "Rotate Matrix 90 Degrees",
+    "description": "Given an n x n matrix, rotate it 90 degrees clockwise and print it row-wise.",
+    "difficulty": "Medium",
+    "defaultInput": "3\n1 2 3\n4 5 6\n7 8 9",
+    "tests": [
+      { "input": "3\n1 2 3\n4 5 6\n7 8 9", "expectedOutput": "7 4 1\n8 5 2\n9 6 3" }
+    ]
+  }
+]
