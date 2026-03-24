@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import axios from "axios";
+import { executePython } from "./utils/executePython.js";
+import { executeJS } from "./utils/executeJS.js";
 import fs from "fs";
 import path from "path";
 
@@ -9,14 +10,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-
-const LANGUAGES = {
-  python: "3.10.0",
-  javascript: "18.15.0",
-  java: "15.0.2",
-  cpp: "10.2.0",
-  c: "10.2.0",
-};
 
 const __dirname = path.resolve();
 const questionsPath = path.join(__dirname, "questions.json");
@@ -35,83 +28,94 @@ app.get("/questions/:id", (req, res) => {
 
 app.post("/run", async (req, res) => {
   const { language, code, input } = req.body;
-  if (!language || !code) return res.status(400).json({ error: "Language and code are required" });
-  if (!LANGUAGES[language]) return res.status(400).json({ error: "Unsupported language" });
 
-  const payload = {
-    language,
-    version: LANGUAGES[language],
-    files: [{ content: code }],
-    stdin: input || "",
-  };
+  if (!language || !code) {
+    return res.status(400).json({ error: "Language and code required" });
+  }
 
   try {
-    const response = await axios.post("https://emkc.org/api/v2/piston/execute", payload);
-    const runData = response.data.run || {};
-    res.json({
-      output: (runData.output || "").trim(),
-      stderr: (runData.stderr || "").trim(),
-      code: runData.code,
-      signal: runData.signal,
-    });
+    let result;
+
+    if (language === "python") {
+      result = await executePython(code, input);
+    } else if (language === "javascript") {
+      result = await executeJS(code, input);
+    } else {
+      return res.status(400).json({ error: "Unsupported language" });
+    }
+
+    res.json(result);
   } catch (err) {
-    console.error("Piston API error:", err.response?.data || err.message);
-    res.status(err.response?.status || 500).json({ error: "Code execution failed" });
+    res.status(500).json({ error: err.message });
   }
 });
 
 app.post("/run-tests", async (req, res) => {
   const { questionId, language, code } = req.body;
+
   if (!questionId || !language || !code) {
     return res.status(400).json({ error: "questionId, language and code are required" });
   }
-  if (!LANGUAGES[language]) return res.status(400).json({ error: "Unsupported language" });
 
   const q = questionsData.find((x) => x.id === Number(questionId));
   if (!q) return res.status(404).json({ error: "Question not found" });
 
-  const tests = Array.isArray(q.tests) ? q.tests : [];
+  const normalize = (str) => str.trim().replace(/\r/g, "");
+
   const results = [];
 
-  for (let i = 0; i < tests.length; i++) {
-    const t = tests[i];
-    const payload = {
-      language,
-      version: LANGUAGES[language],
-      files: [{ content: code }],
-      stdin: t.input ?? "",
-    };
+  for (let i = 0; i < q.tests.length; i++) {
+    const t = q.tests[i];
+
     try {
-      const resp = await axios.post("https://emkc.org/api/v2/piston/execute", payload);
-      const runData = resp.data.run || {};
-      const out = (runData.output || "").trim();
-      const expected = (t.expectedOutput || "").trim();
+      let runResult;
+
+      if (language === "python") {
+        runResult = await executePython(code, t.input);
+      } else if (language === "javascript") {
+        runResult = await executeJS(code, t.input);
+      } else {
+        return res.status(400).json({ error: "Unsupported language" });
+      }
+
+      const output = normalize(runResult.output || "");
+      const expected = normalize(t.expectedOutput || "");
+
       results.push({
         index: i,
         input: t.input,
         expectedOutput: expected,
-        output: out,
-        pass: out === expected,
-        stderr: (runData.stderr || "").trim(),
+        output,
+        pass: output === expected,
+        stderr: runResult.stderr || "",
       });
-    } catch (e) {
+
+    } catch (err) {
       results.push({
         index: i,
         input: t.input,
         expectedOutput: t.expectedOutput || "",
         output: "",
         pass: false,
-        stderr: e.response?.data || e.message,
+        stderr: err.message,
       });
     }
   }
 
   const passed = results.filter((r) => r.pass).length;
-  res.json({ questionId, total: tests.length, passed, results });
+
+  res.json({
+    questionId,
+    total: q.tests.length,
+    passed,
+    results,
+  });
+});
+
+app.get("/", (req, res) => {
+  res.send("Mini Piston Backend Running 🚀");
 });
 
 app.listen(PORT, () => {
   console.log(`✅ Backend running on port ${PORT}`);
 });
-
-export default app;
